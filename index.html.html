@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SciAstra Clone / Science & Research Community</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --accent: #7c3aed;
+      --dark: #0f172a;
+      --gray-light: #f8fafc;
+      --text: #334155;
+      --text-muted: #64748b;
+      --card-border: #e2e8f0;
+      --radius: 12px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--gray-light);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Navbar */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.8rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .btn {
+      padding: 0.65rem 1.4rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--card-border);
+      color: var(--dark) !important;
+      background: #fff;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary) !important;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+      background: radial-gradient(circle at 50% 10%, rgba(124, 58, 237, 0.08), transparent 70%);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      background: #ede9fe;
+      color: var(--accent);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--dark);
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /* Stats Section */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      padding: 2.5rem 0;
+      text-align: center;
+    }
+
+    .stat-card {
+      background: #fff;
+      padding: 1.8rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-card h3 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-card p {
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Features / Targeted Exams */
+    .section-title {
+      text-align: center;
+      margin: 4rem 0 2.5rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.1rem;
+      color: var(--dark);
+      font-weight: 700;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 4rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 2rem;
+      border: 1px solid var(--card-border);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      background: #eff6ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">SciAstra 🔬</a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#exams">Exams</a></li>
+          <li><a href="#community">Community</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#" class="btn btn-primary">Join Batch</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <span class="badge">🚀 India's #1 Research & Science Hub</span>
+      <h1>Empowering the Next Generation of <span>Scientists</span></h1>
+      <p>Target premier science institutes like IISc, IISERs, NISER, ISI, and CMI with mentorship from top researchers and scientists.</p>
+      <div class="hero-actions">
+        <a href="#exams" class="btn btn-primary">Explore Courses</a>
+        <a href="#community" class="btn btn-outline">Join Community</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <!-- Statistics -->
+    <section class="stats">
+      <div class="stat-card">
+        <h3>500,000+</h3>
+        <p>Students Guided</p>
+      </div>
+      <div class="stat-card">
+        <h3>2,000+</h3>
+        <p>IISc & IISER Selections</p>
+      </div>
+      <div class="stat-card">
+        <h3>50+</h3>
+        <p>Top Scientist Mentors</p>
+      </div>
+      <div class="stat-card">
+        <h3>100%</h3>
+        <p>Passion for Research</p>
+      </div>
+    </section>
+
+    <!-- Key Programs -->
+    <section id="exams">
+      <div class="section-title">
+        <h2>Target Science Entrances</h2>
+        <p>Comprehensive preparation and mentorship for all major premier research programs.</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-icon">⚛️</div>
+          <h3>IISER Aptitude Test (IAT)</h3>
+          <p>Complete mock tests, concept-clearing video lectures, and live doubt sessions geared specifically for IISER admissions.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">🧪</div>
+          <h3>NEST (NISER / CEBS)</h3>
+          <p>Targeted problem-solving frameworks designed around atomic energy & basic sciences entrance examination patterns.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon">📐</div>
+          <h3>ISI & CMI Math Batches</h3>
+          <p>Advanced discrete math, proof-writing workshops, and subjective assessment for aspiring mathematicians and statisticians.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 SciAstra Project. Built with GitHub Pages.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
